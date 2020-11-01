@@ -280,7 +280,7 @@ bool ProcessLocalFileTypes(const wchar_t *Name, int Mode, bool AlwaysWaitFinish)
 
 			if (!isSilent)
 			{
-				CtrlObject->CmdLine->ExecString(strCommand,AlwaysWaitFinish, false, false, ListFileUsed);
+				CtrlObject->CmdLine->ExecString(strCommand,false, false);
 
 				if (!(Opt.ExcludeCmdHistory&EXCLUDECMDHISTORY_NOTFARASS) && !AlwaysWaitFinish) //AN
 					CtrlObject->CmdHistory->AddToHistory(strCommand);
@@ -291,7 +291,7 @@ bool ProcessLocalFileTypes(const wchar_t *Name, int Mode, bool AlwaysWaitFinish)
 				SaveScreen SaveScr;
 				CtrlObject->Cp()->LeftPanel->CloseFile();
 				CtrlObject->Cp()->RightPanel->CloseFile();
-				Execute(strCommand,AlwaysWaitFinish, 0, 0, 0, ListFileUsed, true);
+				Execute(strCommand,false,true);
 #else
 				// здесь была бага с прорисовкой (и... вывод данных
 				// на команду "@type !@!" пропадал с экрана)
@@ -328,7 +328,7 @@ void ProcessGlobalFileTypes(const wchar_t *Name, bool AlwaysWaitFinish, bool Run
 {
 	FARString strName(Name);
 	EscapeSpace(strName);
-	CtrlObject->CmdLine->ExecString(strName, AlwaysWaitFinish, true, true, false, false, RunAs);
+	CtrlObject->CmdLine->ExecString(strName, true, false);
 
 	if (!(Opt.ExcludeCmdHistory&EXCLUDECMDHISTORY_NOTWINASS) && !AlwaysWaitFinish)
 	{
@@ -357,13 +357,13 @@ void ProcessExternal(const wchar_t *Command, const wchar_t *Name, bool AlwaysWai
 		CtrlObject->ViewHistory->AddToHistory(strFullExecStr,(AlwaysWaitFinish&1)+2);
 
 		if (strExecStr.At(0) != L'@')
-			CtrlObject->CmdLine->ExecString(strExecStr,AlwaysWaitFinish, 0, 0, ListFileUsed, true);
+			CtrlObject->CmdLine->ExecString(strExecStr,false,false);
 		else
 		{
 			SaveScreen SaveScr;
 			CtrlObject->Cp()->LeftPanel->CloseFile();
 			CtrlObject->Cp()->RightPanel->CloseFile();
-			Execute(strExecStr.CPtr()+1,AlwaysWaitFinish, 0, 0, 0, ListFileUsed);
+			Execute(strExecStr.CPtr()+1,false,false);
 		}
 	}
 

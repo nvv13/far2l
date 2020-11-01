@@ -873,14 +873,14 @@ int UserMenu::ProcessSingleMenu(const wchar_t *MenuKey,int MenuPos,const wchar_t
 
 							if (!isSilent)
 							{
-								CtrlObject->CmdLine->ExecString(strCommand,FALSE, 0, 0, ListFileUsed);
+								CtrlObject->CmdLine->ExecString(strCommand,false,false);
 							}
 							else
 							{
 								SaveScreen SaveScr;
 								CtrlObject->Cp()->LeftPanel->CloseFile();
 								CtrlObject->Cp()->RightPanel->CloseFile();
-								Execute(strCommand,TRUE, 0, 0, 0, ListFileUsed, true);
+								Execute(strCommand,false,true);
 							}
 						}
 					}

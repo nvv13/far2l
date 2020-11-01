@@ -296,7 +296,7 @@ static int MainProcess(
 					if (IsPluginPrefixPath(strDestName2))
 					{
 						AnotherPanel->SetFocus();
-						CtrlObject->CmdLine->ExecString(strDestName2,0);
+						CtrlObject->CmdLine->ExecString(strDestName2,false,false);
 						ActivePanel->SetFocus();
 					}
 					else

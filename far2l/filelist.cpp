@@ -2307,7 +2307,7 @@ void FileList::ProcessEnter(bool EnableExec,bool SeparateWindow,bool EnableAssoc
 			}
 
 			EscapeSpace(strFullPath);
-			Execute(strFullPath, false, SeparateWindow, true, (CurPtr->FileAttr&FILE_ATTRIBUTE_DIRECTORY)!=0);
+			Execute(strFullPath, SeparateWindow, false);
 		}
 		else
 		{
@@ -2368,7 +2368,7 @@ void FileList::ProcessEnter(bool EnableExec,bool SeparateWindow,bool EnableAssoc
 			if (!(Opt.ExcludeCmdHistory&EXCLUDECMDHISTORY_NOTPANEL) && !PluginMode) //AN
 				CtrlObject->CmdHistory->AddToHistory(strFileName);
 
-			CtrlObject->CmdLine->ExecString(strFileName, PluginMode, SeparateWindow, true, false, false, RunAs);
+			CtrlObject->CmdLine->ExecString(strFileName, SeparateWindow, false);
 
 			if (PluginMode)
 				apiDeleteFile(strFileName);
@@ -4475,7 +4475,7 @@ bool FileList::ApplyCommand()
 
 				if (!isSilent)   // TODO: Здесь не isSilent!
 				{
-					CtrlObject->CmdLine->ExecString(strConvertedCommand,FALSE, 0, 0, ListFileUsed); // Param2 == TRUE?
+					CtrlObject->CmdLine->ExecString(strConvertedCommand,false,false); // Param2 == TRUE?
 					//if (!(Opt.ExcludeCmdHistory&EXCLUDECMDHISTORY_NOTAPPLYCMD))
 					//	CtrlObject->CmdHistory->AddToHistory(strConvertedCommand);
 				}
@@ -4483,7 +4483,7 @@ bool FileList::ApplyCommand()
 				{
 					CtrlObject->Cp()->LeftPanel->CloseFile();
 					CtrlObject->Cp()->RightPanel->CloseFile();
-					Execute(strConvertedCommand,FALSE,FALSE, 0, 0, ListFileUsed, true);
+					Execute(strConvertedCommand,false,true);
 				}
 			}
 
