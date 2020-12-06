@@ -45,6 +45,16 @@ apt-get install gawk m4 libwxgtk3.0-dev libxerces-c-dev libspdlog-dev libucharde
 ```
 (if in Ubuntu 19.04+ or other that has missing libwxgtk3.0-dev - try libwxgtk3.0-gtk3-dev)
 
+
+#### Or simply on Fedora:
+``` sh
+dnf install -y gawk m4 gcc-c++ wxGTK3-devel cmake git
+
+dnf install -y libssh-devel libsmbclient-devel libnfs-devel libarchive-devel neon-devel
+
+dnf install -y uchardet uchardet-devel spdlog spdlog-devel python-devel xerces-c xerces-c-devel
+```
+
 #### Clone and Build
 
 ``` sh
