@@ -68,6 +68,12 @@ _with make:_
 cmake -DUSEWX=yes -DCMAKE_BUILD_TYPE=Release ..
 make -j$(nproc --all)
 ``` 
+
+``` 
+sudo make install
+``` 
+
+
 _or with ninja (you need **ninja-build** package installed)_
 ``` sh
 cmake -DUSEWX=yes -DCMAKE_BUILD_TYPE=Release -G Ninja ..
